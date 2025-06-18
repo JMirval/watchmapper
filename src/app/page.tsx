@@ -1,5 +1,5 @@
-import Map from "./components/Map"
+import MapView from "./components/MapView"
 
 export default function Home() {
-  return <Map />
+  return <MapView />
 }
