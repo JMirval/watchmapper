@@ -3,13 +3,21 @@ const { withBlitz } = require("@blitzjs/next")
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // your other config options
+  // your other valid options here
 }
 
-// Wrap with Blitz
-const rawConfig = withBlitz(nextConfig)
+const blitzConfig = withBlitz(nextConfig)
 
-// Remove invalid keys (Vercel-safe)
-const { __esModule, default: _default, ...sanitizedConfig } = rawConfig
+// Recursively remove `target` and other invalid keys
+function stripInvalidKeys(obj) {
+  if (typeof obj !== "object" || obj === null) return obj
 
-module.exports = sanitizedConfig
+  const cleaned = {}
+  for (const key of Object.keys(obj)) {
+    if (key === "target" || key === "__esModule" || key === "default") continue
+    cleaned[key] = stripInvalidKeys(obj[key])
+  }
+  return cleaned
+}
+
+module.exports = stripInvalidKeys(blitzConfig)
