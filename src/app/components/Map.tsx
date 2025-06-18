@@ -5,11 +5,9 @@ import L from "leaflet"
 import "leaflet/dist/leaflet.css"
 
 // Fix default icon issue in Leaflet (optional, but good practice)
-const iconUrl = require("leaflet/dist/images/marker-icon.png")
-const iconShadow = require("leaflet/dist/images/marker-shadow.png")
 L.Icon.Default.mergeOptions({
-  iconUrl,
-  shadowUrl: iconShadow,
+  iconUrl: "/leaflet/marker-icon.png",
+  shadowUrl: "/leaflet/marker-shadow.png",
 })
 
 // Custom divIcon for repair and reseller with emoji in a white circle
