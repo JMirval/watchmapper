@@ -1,0 +1,5 @@
+{
+  "buildCommand": "prisma generate && blitz build",
+  "outputDirectory": ".next",
+  "ignoreCommand": "true"
+}
