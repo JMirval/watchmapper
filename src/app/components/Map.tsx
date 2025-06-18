@@ -102,7 +102,8 @@ export default function Map() {
           zIndex: 1000,
         }}
       >
-        <h2>Filter Watch Services</h2>
+        <h1>WatchMapper</h1>
+        <h3>Filter Watch Services</h3>
         <form style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <label>
             Type
