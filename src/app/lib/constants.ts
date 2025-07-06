@@ -1,10 +1,4 @@
 import { BrandName, Reseller, ShopType } from "./types"
-import rolexLogo from "@/public/brands/rolex.png"
-import omegaLogo from "@/public/brands/omega.png"
-import seikoLogo from "@/public/brands/seiko.png"
-import citizenLogo from "@/public/brands/citizen.png"
-import patekPhilippeLogo from "@/public/brands/patek-philippe.png"
-import tissotLogo from "@/public/brands/tissot.png"
 
 // Sample data for resellers/repair shops
 export const RESELLERS: Reseller[] = [
@@ -51,10 +45,10 @@ export const RESELLERS: Reseller[] = [
 ]
 
 export const BRANDS = {
-  [BrandName.Rolex]: { name: BrandName.Rolex, icon: rolexLogo.src },
-  [BrandName.Omega]: { name: BrandName.Omega, icon: omegaLogo.src },
-  [BrandName.Seiko]: { name: BrandName.Seiko, icon: seikoLogo.src },
-  [BrandName.Citizen]: { name: BrandName.Citizen, icon: citizenLogo.src },
-  [BrandName.PatekPhilippe]: { name: BrandName.PatekPhilippe, icon: patekPhilippeLogo.src },
-  [BrandName.Tissot]: { name: BrandName.Tissot, icon: tissotLogo.src },
+  [BrandName.Rolex]: { name: BrandName.Rolex, icon: "/brands/rolex.png" },
+  [BrandName.Omega]: { name: BrandName.Omega, icon: "/brands/omega.png" },
+  [BrandName.Seiko]: { name: BrandName.Seiko, icon: "/brands/seiko.png" },
+  [BrandName.Citizen]: { name: BrandName.Citizen, icon: "/brands/citizen.png" },
+  [BrandName.PatekPhilippe]: { name: BrandName.PatekPhilippe, icon: "/brands/patek-philippe.png" },
+  [BrandName.Tissot]: { name: BrandName.Tissot, icon: "/brands/tissot.png" },
 }
