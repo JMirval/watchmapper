@@ -1,4 +1,4 @@
-import { BrandName, Filters, ShopType } from "@/lib/types"
+import { BrandName, Filters } from "@/lib/types"
 import { create } from "zustand"
 
 interface FiltersState {
