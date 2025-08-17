@@ -225,6 +225,18 @@
       "shareShop": "Share Shop",
       "addToFavorites": "Add to Favorites",
       "removeFromFavorites": "Remove from Favorites"
+    },
+    "stats": {
+      "title": "Shop Statistics",
+      "description": "Overview of available shops",
+      "totalShops": "Total Shops",
+      "totalReviews": "Total Reviews",
+      "repairShops": "Repair Shops",
+      "resellerShops": "Reseller Shops",
+      "avgRating": "Avg Rating",
+      "lastUpdated": "Last updated: {date}",
+      "shopsFound": "{count} shop{count, plural, one {} other {s}} found",
+      "increaseFromLastMonth": "+{count} from last month"
     }
   },
   "filters": {

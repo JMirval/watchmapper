@@ -105,7 +105,7 @@ export default function CommandAtMarkerOverlay({
               transform: "translate(-50%, -108%)", // align top center of marker
             }}
           >
-            <Card className="w-72 md:w-80 py-0 shadow-2xl border-0 overflow-hidden bg-white/95 backdrop-blur-sm">
+            <Card className="w-72 md:w-80 py-0 gap-2 shadow-2xl border-0 overflow-hidden bg-white/95 backdrop-blur-sm">
               {/* Header with gradient background */}
               <CardHeader className="p-0">
                 <div
@@ -139,7 +139,7 @@ export default function CommandAtMarkerOverlay({
                 </div>
               </CardHeader>
 
-              <CardContent className="p-4">
+              <CardContent className="p-4 pt-0">
                 {/* Rating and type */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
@@ -231,7 +231,6 @@ export default function CommandAtMarkerOverlay({
                     size="sm"
                   >
                     <Navigation className="h-4 w-4 mr-2" />
-                    {t("directions")}
                   </Button>
                   <Button
                     onClick={() => alert(t("calling", { name: shop.name }))}
@@ -240,7 +239,6 @@ export default function CommandAtMarkerOverlay({
                     className="flex-1"
                   >
                     <Phone className="h-4 w-4 mr-2" />
-                    {t("call")}
                   </Button>
                   <div className="flex gap-2">
                     <Button

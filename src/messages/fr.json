@@ -225,6 +225,18 @@
       "shareShop": "Partager la boutique",
       "addToFavorites": "Ajouter aux favoris",
       "removeFromFavorites": "Retirer des favoris"
+    },
+    "stats": {
+      "title": "Statistiques des boutiques",
+      "description": "Aperçu des boutiques disponibles",
+      "totalShops": "Total des boutiques",
+      "totalReviews": "Total des avis",
+      "repairShops": "Ateliers de réparation",
+      "resellerShops": "Boutiques revendeurs",
+      "avgRating": "Note moyenne",
+      "lastUpdated": "Dernière mise à jour : {date}",
+      "shopsFound": "{count} boutique{count, plural, one {} other {s}} trouvée{count, plural, one {} other {s}}",
+      "increaseFromLastMonth": "+{count} par rapport au mois dernier"
     }
   },
   "filters": {

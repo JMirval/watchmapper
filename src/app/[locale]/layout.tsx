@@ -4,7 +4,6 @@ import { locales } from "@/types"
 import "../styles/globals.css"
 import { BlitzProvider } from "../blitz-client"
 import { Inter } from "next/font/google"
-import { Toaster } from "sonner"
 import { Navigation } from "./components/Navigation"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -34,7 +33,6 @@ export default async function LocaleLayout({
         <div className="min-h-screen bg-gray-50">
           <Navigation />
           <main>{children}</main>
-          <Toaster position="top-right" />
         </div>
       </BlitzProvider>
     </NextIntlClientProvider>

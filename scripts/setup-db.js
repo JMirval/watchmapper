@@ -13,10 +13,10 @@ if (!fs.existsSync(envPath)) {
 
   const envContent = `# Database
 # For development (SQLite)
-DATABASE_URL="file:./dev.db"
+POSTGRES_URL="file:./dev.db"
 
 # For production (PostgreSQL)
-# DATABASE_URL="postgresql://username:password@host:port/database"
+# POSTGRES_URL="postgresql://username:password@host:port/database"
 
 # Session Secret (required for authentication)
 SESSION_SECRET_KEY="${require("crypto").randomBytes(32).toString("base64")}"
