@@ -781,6 +781,10 @@ export namespace Prisma {
             args: Prisma.ShopCreateArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$ShopPayload>
           }
+          createMany: {
+            args: Prisma.ShopCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
           delete: {
             args: Prisma.ShopDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$ShopPayload>
@@ -842,6 +846,10 @@ export namespace Prisma {
           create: {
             args: Prisma.BrandCreateArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$BrandPayload>
+          }
+          createMany: {
+            args: Prisma.BrandCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
           }
           delete: {
             args: Prisma.BrandDeleteArgs<ExtArgs>,
@@ -905,6 +913,10 @@ export namespace Prisma {
             args: Prisma.UserCreateArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$UserPayload>
           }
+          createMany: {
+            args: Prisma.UserCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
           delete: {
             args: Prisma.UserDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$UserPayload>
@@ -966,6 +978,10 @@ export namespace Prisma {
           create: {
             args: Prisma.SessionCreateArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$SessionPayload>
+          }
+          createMany: {
+            args: Prisma.SessionCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
           }
           delete: {
             args: Prisma.SessionDeleteArgs<ExtArgs>,
@@ -1029,6 +1045,10 @@ export namespace Prisma {
             args: Prisma.TokenCreateArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$TokenPayload>
           }
+          createMany: {
+            args: Prisma.TokenCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
           delete: {
             args: Prisma.TokenDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$TokenPayload>
@@ -1090,6 +1110,10 @@ export namespace Prisma {
           create: {
             args: Prisma.UserBrandCreateArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$UserBrandPayload>
+          }
+          createMany: {
+            args: Prisma.UserBrandCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
           }
           delete: {
             args: Prisma.UserBrandDeleteArgs<ExtArgs>,
@@ -1153,6 +1177,10 @@ export namespace Prisma {
             args: Prisma.UserShopCreateArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$UserShopPayload>
           }
+          createMany: {
+            args: Prisma.UserShopCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
           delete: {
             args: Prisma.UserShopDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$UserShopPayload>
@@ -1214,6 +1242,10 @@ export namespace Prisma {
           create: {
             args: Prisma.ReviewCreateArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          createMany: {
+            args: Prisma.ReviewCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
           }
           delete: {
             args: Prisma.ReviewDeleteArgs<ExtArgs>,
@@ -1947,6 +1979,22 @@ export namespace Prisma {
     ): Prisma__ShopClient<$Result.GetResult<Prisma.$ShopPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
+     * Create many Shops.
+     *     @param {ShopCreateManyArgs} args - Arguments to create many Shops.
+     *     @example
+     *     // Create many Shops
+     *     const shop = await prisma.shop.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ShopCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ShopCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
      * Delete a Shop.
      * @param {ShopDeleteArgs} args - Arguments to delete one Shop.
      * @example
@@ -2421,6 +2469,18 @@ export namespace Prisma {
      * The data needed to create a Shop.
      */
     data: XOR<ShopCreateInput, ShopUncheckedCreateInput>
+  }
+
+
+  /**
+   * Shop createMany
+   */
+  export type ShopCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Shops.
+     */
+    data: ShopCreateManyInput | ShopCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
 
@@ -2945,6 +3005,22 @@ export namespace Prisma {
     ): Prisma__BrandClient<$Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
+     * Create many Brands.
+     *     @param {BrandCreateManyArgs} args - Arguments to create many Brands.
+     *     @example
+     *     // Create many Brands
+     *     const brand = await prisma.brand.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends BrandCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
      * Delete a Brand.
      * @param {BrandDeleteArgs} args - Arguments to delete one Brand.
      * @example
@@ -3415,6 +3491,18 @@ export namespace Prisma {
      * The data needed to create a Brand.
      */
     data: XOR<BrandCreateInput, BrandUncheckedCreateInput>
+  }
+
+
+  /**
+   * Brand createMany
+   */
+  export type BrandCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Brands.
+     */
+    data: BrandCreateManyInput | BrandCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
 
@@ -3997,6 +4085,22 @@ export namespace Prisma {
     ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
+     * Create many Users.
+     *     @param {UserCreateManyArgs} args - Arguments to create many Users.
+     *     @example
+     *     // Create many Users
+     *     const user = await prisma.user.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends UserCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
      * Delete a User.
      * @param {UserDeleteArgs} args - Arguments to delete one User.
      * @example
@@ -4480,6 +4584,18 @@ export namespace Prisma {
      * The data needed to create a User.
      */
     data: XOR<UserCreateInput, UserUncheckedCreateInput>
+  }
+
+
+  /**
+   * User createMany
+   */
+  export type UserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Users.
+     */
+    data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
 
@@ -5095,6 +5211,22 @@ export namespace Prisma {
     ): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
+     * Create many Sessions.
+     *     @param {SessionCreateManyArgs} args - Arguments to create many Sessions.
+     *     @example
+     *     // Create many Sessions
+     *     const session = await prisma.session.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends SessionCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SessionCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
      * Delete a Session.
      * @param {SessionDeleteArgs} args - Arguments to delete one Session.
      * @example
@@ -5568,6 +5700,18 @@ export namespace Prisma {
      * The data needed to create a Session.
      */
     data: XOR<SessionCreateInput, SessionUncheckedCreateInput>
+  }
+
+
+  /**
+   * Session createMany
+   */
+  export type SessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Sessions.
+     */
+    data: SessionCreateManyInput | SessionCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
 
@@ -6074,6 +6218,22 @@ export namespace Prisma {
     ): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
+     * Create many Tokens.
+     *     @param {TokenCreateManyArgs} args - Arguments to create many Tokens.
+     *     @example
+     *     // Create many Tokens
+     *     const token = await prisma.token.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends TokenCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TokenCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
      * Delete a Token.
      * @param {TokenDeleteArgs} args - Arguments to delete one Token.
      * @example
@@ -6549,6 +6709,18 @@ export namespace Prisma {
 
 
   /**
+   * Token createMany
+   */
+  export type TokenCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Tokens.
+     */
+    data: TokenCreateManyInput | TokenCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
    * Token update
    */
   export type TokenUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7000,6 +7172,22 @@ export namespace Prisma {
     create<T extends UserBrandCreateArgs<ExtArgs>>(
       args: SelectSubset<T, UserBrandCreateArgs<ExtArgs>>
     ): Prisma__UserBrandClient<$Result.GetResult<Prisma.$UserBrandPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many UserBrands.
+     *     @param {UserBrandCreateManyArgs} args - Arguments to create many UserBrands.
+     *     @example
+     *     // Create many UserBrands
+     *     const userBrand = await prisma.userBrand.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends UserBrandCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserBrandCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Delete a UserBrand.
@@ -7475,6 +7663,18 @@ export namespace Prisma {
 
 
   /**
+   * UserBrand createMany
+   */
+  export type UserBrandCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserBrands.
+     */
+    data: UserBrandCreateManyInput | UserBrandCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
    * UserBrand update
    */
   export type UserBrandUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7926,6 +8126,22 @@ export namespace Prisma {
     create<T extends UserShopCreateArgs<ExtArgs>>(
       args: SelectSubset<T, UserShopCreateArgs<ExtArgs>>
     ): Prisma__UserShopClient<$Result.GetResult<Prisma.$UserShopPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many UserShops.
+     *     @param {UserShopCreateManyArgs} args - Arguments to create many UserShops.
+     *     @example
+     *     // Create many UserShops
+     *     const userShop = await prisma.userShop.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends UserShopCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UserShopCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Delete a UserShop.
@@ -8397,6 +8613,18 @@ export namespace Prisma {
      * The data needed to create a UserShop.
      */
     data: XOR<UserShopCreateInput, UserShopUncheckedCreateInput>
+  }
+
+
+  /**
+   * UserShop createMany
+   */
+  export type UserShopCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserShops.
+     */
+    data: UserShopCreateManyInput | UserShopCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
 
@@ -8888,6 +9116,22 @@ export namespace Prisma {
     ): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
+     * Create many Reviews.
+     *     @param {ReviewCreateManyArgs} args - Arguments to create many Reviews.
+     *     @example
+     *     // Create many Reviews
+     *     const review = await prisma.review.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ReviewCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ReviewCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
      * Delete a Review.
      * @param {ReviewDeleteArgs} args - Arguments to delete one Review.
      * @example
@@ -9364,6 +9608,18 @@ export namespace Prisma {
 
 
   /**
+   * Review createMany
+   */
+  export type ReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Reviews.
+     */
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
    * Review update
    */
   export type ReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9479,6 +9735,9 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
   };
 
@@ -9598,6 +9857,14 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
   export const NullsOrder: {
     first: 'first',
     last: 'last'
@@ -9619,9 +9886,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -9633,9 +9914,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -10267,6 +10562,16 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutShopNestedInput
   }
 
+  export type ShopCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
+    latitude: number
+    longitude: number
+  }
+
   export type ShopUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10322,6 +10627,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     shops?: ShopUncheckedUpdateManyWithoutBrandsNestedInput
     favoriteUsers?: UserBrandUncheckedUpdateManyWithoutBrandNestedInput
+  }
+
+  export type BrandCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    type: string
   }
 
   export type BrandUpdateManyMutationInput = {
@@ -10417,6 +10730,21 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type UserCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name?: string | null
+    email: string
+    hashedPassword?: string | null
+    role?: string
+    avatar?: string | null
+    bio?: string | null
+    location?: string | null
+    phone?: string | null
+    preferences?: string | null
+  }
+
   export type UserUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10496,6 +10824,19 @@ export namespace Prisma {
     userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type SessionCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    expiresAt?: Date | string | null
+    handle: string
+    hashedSessionToken?: string | null
+    antiCSRFToken?: string | null
+    publicData?: string | null
+    privateData?: string | null
+    userId?: number | null
+  }
+
   export type SessionUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10562,6 +10903,17 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type TokenCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hashedToken: string
+    type: string
+    expiresAt: Date | string
+    sentTo: string
+    userId: number
+  }
+
   export type TokenUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10608,6 +10960,13 @@ export namespace Prisma {
     brandId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type UserBrandCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    userId: number
+    brandId: number
+  }
+
   export type UserBrandUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10643,6 +11002,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
     shopId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserShopCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    userId: number
+    shopId: number
   }
 
   export type UserShopUpdateManyMutationInput = {
@@ -10694,6 +11060,16 @@ export namespace Prisma {
     shopId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type ReviewCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rating?: number
+    comment?: string | null
+    userId: number
+    shopId: number
+  }
+
   export type ReviewUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10713,8 +11089,8 @@ export namespace Prisma {
 
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -10724,8 +11100,8 @@ export namespace Prisma {
 
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -10735,8 +11111,8 @@ export namespace Prisma {
 
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -10744,13 +11120,14 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -10832,8 +11209,8 @@ export namespace Prisma {
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -10848,8 +11225,8 @@ export namespace Prisma {
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -10862,8 +11239,8 @@ export namespace Prisma {
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -10871,6 +11248,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -10879,8 +11257,8 @@ export namespace Prisma {
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -10947,8 +11325,8 @@ export namespace Prisma {
 
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -10956,6 +11334,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
@@ -11039,8 +11418,8 @@ export namespace Prisma {
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -11048,6 +11427,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
@@ -11056,8 +11436,8 @@ export namespace Prisma {
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -11067,8 +11447,8 @@ export namespace Prisma {
 
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -11132,8 +11512,8 @@ export namespace Prisma {
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -11146,8 +11526,8 @@ export namespace Prisma {
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -11357,12 +11737,14 @@ export namespace Prisma {
   export type UserShopCreateNestedManyWithoutShopInput = {
     create?: XOR<UserShopCreateWithoutShopInput, UserShopUncheckedCreateWithoutShopInput> | UserShopCreateWithoutShopInput[] | UserShopUncheckedCreateWithoutShopInput[]
     connectOrCreate?: UserShopCreateOrConnectWithoutShopInput | UserShopCreateOrConnectWithoutShopInput[]
+    createMany?: UserShopCreateManyShopInputEnvelope
     connect?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
   }
 
   export type ReviewCreateNestedManyWithoutShopInput = {
     create?: XOR<ReviewCreateWithoutShopInput, ReviewUncheckedCreateWithoutShopInput> | ReviewCreateWithoutShopInput[] | ReviewUncheckedCreateWithoutShopInput[]
     connectOrCreate?: ReviewCreateOrConnectWithoutShopInput | ReviewCreateOrConnectWithoutShopInput[]
+    createMany?: ReviewCreateManyShopInputEnvelope
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
@@ -11375,12 +11757,14 @@ export namespace Prisma {
   export type UserShopUncheckedCreateNestedManyWithoutShopInput = {
     create?: XOR<UserShopCreateWithoutShopInput, UserShopUncheckedCreateWithoutShopInput> | UserShopCreateWithoutShopInput[] | UserShopUncheckedCreateWithoutShopInput[]
     connectOrCreate?: UserShopCreateOrConnectWithoutShopInput | UserShopCreateOrConnectWithoutShopInput[]
+    createMany?: UserShopCreateManyShopInputEnvelope
     connect?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
   }
 
   export type ReviewUncheckedCreateNestedManyWithoutShopInput = {
     create?: XOR<ReviewCreateWithoutShopInput, ReviewUncheckedCreateWithoutShopInput> | ReviewCreateWithoutShopInput[] | ReviewUncheckedCreateWithoutShopInput[]
     connectOrCreate?: ReviewCreateOrConnectWithoutShopInput | ReviewCreateOrConnectWithoutShopInput[]
+    createMany?: ReviewCreateManyShopInputEnvelope
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
@@ -11417,6 +11801,7 @@ export namespace Prisma {
     create?: XOR<UserShopCreateWithoutShopInput, UserShopUncheckedCreateWithoutShopInput> | UserShopCreateWithoutShopInput[] | UserShopUncheckedCreateWithoutShopInput[]
     connectOrCreate?: UserShopCreateOrConnectWithoutShopInput | UserShopCreateOrConnectWithoutShopInput[]
     upsert?: UserShopUpsertWithWhereUniqueWithoutShopInput | UserShopUpsertWithWhereUniqueWithoutShopInput[]
+    createMany?: UserShopCreateManyShopInputEnvelope
     set?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
     disconnect?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
     delete?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
@@ -11430,6 +11815,7 @@ export namespace Prisma {
     create?: XOR<ReviewCreateWithoutShopInput, ReviewUncheckedCreateWithoutShopInput> | ReviewCreateWithoutShopInput[] | ReviewUncheckedCreateWithoutShopInput[]
     connectOrCreate?: ReviewCreateOrConnectWithoutShopInput | ReviewCreateOrConnectWithoutShopInput[]
     upsert?: ReviewUpsertWithWhereUniqueWithoutShopInput | ReviewUpsertWithWhereUniqueWithoutShopInput[]
+    createMany?: ReviewCreateManyShopInputEnvelope
     set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
     disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
     delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
@@ -11464,6 +11850,7 @@ export namespace Prisma {
     create?: XOR<UserShopCreateWithoutShopInput, UserShopUncheckedCreateWithoutShopInput> | UserShopCreateWithoutShopInput[] | UserShopUncheckedCreateWithoutShopInput[]
     connectOrCreate?: UserShopCreateOrConnectWithoutShopInput | UserShopCreateOrConnectWithoutShopInput[]
     upsert?: UserShopUpsertWithWhereUniqueWithoutShopInput | UserShopUpsertWithWhereUniqueWithoutShopInput[]
+    createMany?: UserShopCreateManyShopInputEnvelope
     set?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
     disconnect?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
     delete?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
@@ -11477,6 +11864,7 @@ export namespace Prisma {
     create?: XOR<ReviewCreateWithoutShopInput, ReviewUncheckedCreateWithoutShopInput> | ReviewCreateWithoutShopInput[] | ReviewUncheckedCreateWithoutShopInput[]
     connectOrCreate?: ReviewCreateOrConnectWithoutShopInput | ReviewCreateOrConnectWithoutShopInput[]
     upsert?: ReviewUpsertWithWhereUniqueWithoutShopInput | ReviewUpsertWithWhereUniqueWithoutShopInput[]
+    createMany?: ReviewCreateManyShopInputEnvelope
     set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
     disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
     delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
@@ -11495,6 +11883,7 @@ export namespace Prisma {
   export type UserBrandCreateNestedManyWithoutBrandInput = {
     create?: XOR<UserBrandCreateWithoutBrandInput, UserBrandUncheckedCreateWithoutBrandInput> | UserBrandCreateWithoutBrandInput[] | UserBrandUncheckedCreateWithoutBrandInput[]
     connectOrCreate?: UserBrandCreateOrConnectWithoutBrandInput | UserBrandCreateOrConnectWithoutBrandInput[]
+    createMany?: UserBrandCreateManyBrandInputEnvelope
     connect?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
   }
 
@@ -11507,6 +11896,7 @@ export namespace Prisma {
   export type UserBrandUncheckedCreateNestedManyWithoutBrandInput = {
     create?: XOR<UserBrandCreateWithoutBrandInput, UserBrandUncheckedCreateWithoutBrandInput> | UserBrandCreateWithoutBrandInput[] | UserBrandUncheckedCreateWithoutBrandInput[]
     connectOrCreate?: UserBrandCreateOrConnectWithoutBrandInput | UserBrandCreateOrConnectWithoutBrandInput[]
+    createMany?: UserBrandCreateManyBrandInputEnvelope
     connect?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
   }
 
@@ -11527,6 +11917,7 @@ export namespace Prisma {
     create?: XOR<UserBrandCreateWithoutBrandInput, UserBrandUncheckedCreateWithoutBrandInput> | UserBrandCreateWithoutBrandInput[] | UserBrandUncheckedCreateWithoutBrandInput[]
     connectOrCreate?: UserBrandCreateOrConnectWithoutBrandInput | UserBrandCreateOrConnectWithoutBrandInput[]
     upsert?: UserBrandUpsertWithWhereUniqueWithoutBrandInput | UserBrandUpsertWithWhereUniqueWithoutBrandInput[]
+    createMany?: UserBrandCreateManyBrandInputEnvelope
     set?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
     disconnect?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
     delete?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
@@ -11553,6 +11944,7 @@ export namespace Prisma {
     create?: XOR<UserBrandCreateWithoutBrandInput, UserBrandUncheckedCreateWithoutBrandInput> | UserBrandCreateWithoutBrandInput[] | UserBrandUncheckedCreateWithoutBrandInput[]
     connectOrCreate?: UserBrandCreateOrConnectWithoutBrandInput | UserBrandCreateOrConnectWithoutBrandInput[]
     upsert?: UserBrandUpsertWithWhereUniqueWithoutBrandInput | UserBrandUpsertWithWhereUniqueWithoutBrandInput[]
+    createMany?: UserBrandCreateManyBrandInputEnvelope
     set?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
     disconnect?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
     delete?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
@@ -11565,60 +11957,70 @@ export namespace Prisma {
   export type TokenCreateNestedManyWithoutUserInput = {
     create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
+    createMany?: TokenCreateManyUserInputEnvelope
     connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
   export type UserBrandCreateNestedManyWithoutUserInput = {
     create?: XOR<UserBrandCreateWithoutUserInput, UserBrandUncheckedCreateWithoutUserInput> | UserBrandCreateWithoutUserInput[] | UserBrandUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserBrandCreateOrConnectWithoutUserInput | UserBrandCreateOrConnectWithoutUserInput[]
+    createMany?: UserBrandCreateManyUserInputEnvelope
     connect?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
   }
 
   export type UserShopCreateNestedManyWithoutUserInput = {
     create?: XOR<UserShopCreateWithoutUserInput, UserShopUncheckedCreateWithoutUserInput> | UserShopCreateWithoutUserInput[] | UserShopUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserShopCreateOrConnectWithoutUserInput | UserShopCreateOrConnectWithoutUserInput[]
+    createMany?: UserShopCreateManyUserInputEnvelope
     connect?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
   }
 
   export type ReviewCreateNestedManyWithoutUserInput = {
     create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
   export type TokenUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
+    createMany?: TokenCreateManyUserInputEnvelope
     connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
   }
 
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
   export type UserBrandUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<UserBrandCreateWithoutUserInput, UserBrandUncheckedCreateWithoutUserInput> | UserBrandCreateWithoutUserInput[] | UserBrandUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserBrandCreateOrConnectWithoutUserInput | UserBrandCreateOrConnectWithoutUserInput[]
+    createMany?: UserBrandCreateManyUserInputEnvelope
     connect?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
   }
 
   export type UserShopUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<UserShopCreateWithoutUserInput, UserShopUncheckedCreateWithoutUserInput> | UserShopCreateWithoutUserInput[] | UserShopUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserShopCreateOrConnectWithoutUserInput | UserShopCreateOrConnectWithoutUserInput[]
+    createMany?: UserShopCreateManyUserInputEnvelope
     connect?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
   }
 
   export type ReviewUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
@@ -11630,6 +12032,7 @@ export namespace Prisma {
     create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
     upsert?: TokenUpsertWithWhereUniqueWithoutUserInput | TokenUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TokenCreateManyUserInputEnvelope
     set?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
     disconnect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
     delete?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
@@ -11643,6 +12046,7 @@ export namespace Prisma {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
     set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
     disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
     delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
@@ -11656,6 +12060,7 @@ export namespace Prisma {
     create?: XOR<UserBrandCreateWithoutUserInput, UserBrandUncheckedCreateWithoutUserInput> | UserBrandCreateWithoutUserInput[] | UserBrandUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserBrandCreateOrConnectWithoutUserInput | UserBrandCreateOrConnectWithoutUserInput[]
     upsert?: UserBrandUpsertWithWhereUniqueWithoutUserInput | UserBrandUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserBrandCreateManyUserInputEnvelope
     set?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
     disconnect?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
     delete?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
@@ -11669,6 +12074,7 @@ export namespace Prisma {
     create?: XOR<UserShopCreateWithoutUserInput, UserShopUncheckedCreateWithoutUserInput> | UserShopCreateWithoutUserInput[] | UserShopUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserShopCreateOrConnectWithoutUserInput | UserShopCreateOrConnectWithoutUserInput[]
     upsert?: UserShopUpsertWithWhereUniqueWithoutUserInput | UserShopUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserShopCreateManyUserInputEnvelope
     set?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
     disconnect?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
     delete?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
@@ -11682,6 +12088,7 @@ export namespace Prisma {
     create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
     upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
     set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
     disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
     delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
@@ -11695,6 +12102,7 @@ export namespace Prisma {
     create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
     upsert?: TokenUpsertWithWhereUniqueWithoutUserInput | TokenUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TokenCreateManyUserInputEnvelope
     set?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
     disconnect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
     delete?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
@@ -11708,6 +12116,7 @@ export namespace Prisma {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
     set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
     disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
     delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
@@ -11721,6 +12130,7 @@ export namespace Prisma {
     create?: XOR<UserBrandCreateWithoutUserInput, UserBrandUncheckedCreateWithoutUserInput> | UserBrandCreateWithoutUserInput[] | UserBrandUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserBrandCreateOrConnectWithoutUserInput | UserBrandCreateOrConnectWithoutUserInput[]
     upsert?: UserBrandUpsertWithWhereUniqueWithoutUserInput | UserBrandUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserBrandCreateManyUserInputEnvelope
     set?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
     disconnect?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
     delete?: UserBrandWhereUniqueInput | UserBrandWhereUniqueInput[]
@@ -11734,6 +12144,7 @@ export namespace Prisma {
     create?: XOR<UserShopCreateWithoutUserInput, UserShopUncheckedCreateWithoutUserInput> | UserShopCreateWithoutUserInput[] | UserShopUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserShopCreateOrConnectWithoutUserInput | UserShopCreateOrConnectWithoutUserInput[]
     upsert?: UserShopUpsertWithWhereUniqueWithoutUserInput | UserShopUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserShopCreateManyUserInputEnvelope
     set?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
     disconnect?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
     delete?: UserShopWhereUniqueInput | UserShopWhereUniqueInput[]
@@ -11747,6 +12158,7 @@ export namespace Prisma {
     create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
     upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
     set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
     disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
     delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
@@ -11884,8 +12296,8 @@ export namespace Prisma {
 
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -11895,8 +12307,8 @@ export namespace Prisma {
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -11906,8 +12318,8 @@ export namespace Prisma {
 
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -11920,8 +12332,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -11931,8 +12343,8 @@ export namespace Prisma {
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -11947,8 +12359,8 @@ export namespace Prisma {
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -11961,8 +12373,8 @@ export namespace Prisma {
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -11978,8 +12390,8 @@ export namespace Prisma {
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -11994,8 +12406,8 @@ export namespace Prisma {
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -12008,8 +12420,8 @@ export namespace Prisma {
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -12025,8 +12437,8 @@ export namespace Prisma {
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -12036,8 +12448,8 @@ export namespace Prisma {
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -12047,8 +12459,8 @@ export namespace Prisma {
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -12061,8 +12473,8 @@ export namespace Prisma {
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -12077,8 +12489,8 @@ export namespace Prisma {
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -12124,6 +12536,11 @@ export namespace Prisma {
     create: XOR<UserShopCreateWithoutShopInput, UserShopUncheckedCreateWithoutShopInput>
   }
 
+  export type UserShopCreateManyShopInputEnvelope = {
+    data: UserShopCreateManyShopInput | UserShopCreateManyShopInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ReviewCreateWithoutShopInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -12144,6 +12561,11 @@ export namespace Prisma {
   export type ReviewCreateOrConnectWithoutShopInput = {
     where: ReviewWhereUniqueInput
     create: XOR<ReviewCreateWithoutShopInput, ReviewUncheckedCreateWithoutShopInput>
+  }
+
+  export type ReviewCreateManyShopInputEnvelope = {
+    data: ReviewCreateManyShopInput | ReviewCreateManyShopInput[]
+    skipDuplicates?: boolean
   }
 
   export type BrandUpsertWithWhereUniqueWithoutShopsInput = {
@@ -12272,6 +12694,11 @@ export namespace Prisma {
     create: XOR<UserBrandCreateWithoutBrandInput, UserBrandUncheckedCreateWithoutBrandInput>
   }
 
+  export type UserBrandCreateManyBrandInputEnvelope = {
+    data: UserBrandCreateManyBrandInput | UserBrandCreateManyBrandInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ShopUpsertWithWhereUniqueWithoutBrandsInput = {
     where: ShopWhereUniqueInput
     update: XOR<ShopUpdateWithoutBrandsInput, ShopUncheckedUpdateWithoutBrandsInput>
@@ -12351,6 +12778,11 @@ export namespace Prisma {
     create: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput>
   }
 
+  export type TokenCreateManyUserInputEnvelope = {
+    data: TokenCreateManyUserInput | TokenCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type SessionCreateWithoutUserInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -12379,6 +12811,11 @@ export namespace Prisma {
     create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
   }
 
+  export type SessionCreateManyUserInputEnvelope = {
+    data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserBrandCreateWithoutUserInput = {
     createdAt?: Date | string
     brand: BrandCreateNestedOneWithoutFavoriteUsersInput
@@ -12395,6 +12832,11 @@ export namespace Prisma {
     create: XOR<UserBrandCreateWithoutUserInput, UserBrandUncheckedCreateWithoutUserInput>
   }
 
+  export type UserBrandCreateManyUserInputEnvelope = {
+    data: UserBrandCreateManyUserInput | UserBrandCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserShopCreateWithoutUserInput = {
     createdAt?: Date | string
     shop: ShopCreateNestedOneWithoutFavoriteUsersInput
@@ -12409,6 +12851,11 @@ export namespace Prisma {
   export type UserShopCreateOrConnectWithoutUserInput = {
     where: UserShopWhereUniqueInput
     create: XOR<UserShopCreateWithoutUserInput, UserShopUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserShopCreateManyUserInputEnvelope = {
+    data: UserShopCreateManyUserInput | UserShopCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type ReviewCreateWithoutUserInput = {
@@ -12431,6 +12878,11 @@ export namespace Prisma {
   export type ReviewCreateOrConnectWithoutUserInput = {
     where: ReviewWhereUniqueInput
     create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewCreateManyUserInputEnvelope = {
+    data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type TokenUpsertWithWhereUniqueWithoutUserInput = {
@@ -13167,6 +13619,21 @@ export namespace Prisma {
     favoriteUsers?: UserShopUncheckedUpdateManyWithoutShopNestedInput
   }
 
+  export type UserShopCreateManyShopInput = {
+    id?: number
+    createdAt?: Date | string
+    userId: number
+  }
+
+  export type ReviewCreateManyShopInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rating?: number
+    comment?: string | null
+    userId: number
+  }
+
   export type BrandUpdateWithoutShopsInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13235,6 +13702,12 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type UserBrandCreateManyBrandInput = {
+    id?: number
+    createdAt?: Date | string
+    userId: number
+  }
+
   export type ShopUpdateWithoutBrandsInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13283,6 +13756,49 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TokenCreateManyUserInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hashedToken: string
+    type: string
+    expiresAt: Date | string
+    sentTo: string
+  }
+
+  export type SessionCreateManyUserInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    expiresAt?: Date | string | null
+    handle: string
+    hashedSessionToken?: string | null
+    antiCSRFToken?: string | null
+    publicData?: string | null
+    privateData?: string | null
+  }
+
+  export type UserBrandCreateManyUserInput = {
+    id?: number
+    createdAt?: Date | string
+    brandId: number
+  }
+
+  export type UserShopCreateManyUserInput = {
+    id?: number
+    createdAt?: Date | string
+    shopId: number
+  }
+
+  export type ReviewCreateManyUserInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rating?: number
+    comment?: string | null
+    shopId: number
   }
 
   export type TokenUpdateWithoutUserInput = {
