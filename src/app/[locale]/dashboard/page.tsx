@@ -1,6 +1,8 @@
 "use client"
 import { useCurrentUser } from "../users/hooks/useCurrentUser"
 import { useRouter, useParams } from "next/navigation"
+import { useQuery } from "@blitzjs/rpc"
+import getDashboardStats from "../users/queries/getDashboardStats"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -15,9 +17,45 @@ export default function DashboardPage() {
   const locale = params.locale as string
   const t = useTranslations("dashboard")
 
+  // Fetch dashboard statistics
+  const [dashboardData] = useQuery(getDashboardStats, null, {
+    refetchOnWindowFocus: false,
+  })
+
   if (!user) {
     router.push(`/${locale}/login`)
     return null
+  }
+
+  const { stats, recentActivity } = dashboardData || {
+    stats: {
+      favoriteBrands: { count: 0, change: 0 },
+      favoriteShops: { count: 0, change: 0 },
+      reviews: { count: 0, change: 0 },
+    },
+    recentActivity: {
+      favoriteBrands: [],
+      favoriteShops: [],
+      reviews: [],
+    },
+  }
+
+  const formatChangeText = (change: number) => {
+    if (change === 0) return "No change"
+    const sign = change > 0 ? "+" : ""
+    return `${sign}${change} from last month`
+  }
+
+  const formatDate = (date: Date) => {
+    const now = new Date()
+    const diffTime = Math.abs(now.getTime() - new Date(date).getTime())
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+    if (diffDays === 1) return "1 day ago"
+    if (diffDays < 7) return `${diffDays} days ago`
+    if (diffDays < 30)
+      return `${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) > 1 ? "s" : ""} ago`
+    return `${Math.floor(diffDays / 30)} month${Math.floor(diffDays / 30) > 1 ? "s" : ""} ago`
   }
 
   return (
@@ -42,8 +80,10 @@ export default function DashboardPage() {
               <Heart className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">12</div>
-              <p className="text-xs text-muted-foreground">+2 from last month</p>
+              <div className="text-2xl font-bold">{stats.favoriteBrands.count}</div>
+              <p className="text-xs text-muted-foreground">
+                {formatChangeText(stats.favoriteBrands.change)}
+              </p>
             </CardContent>
           </Card>
 
@@ -53,8 +93,10 @@ export default function DashboardPage() {
               <MapPin className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">8</div>
-              <p className="text-xs text-muted-foreground">+1 from last month</p>
+              <div className="text-2xl font-bold">{stats.favoriteShops.count}</div>
+              <p className="text-xs text-muted-foreground">
+                {formatChangeText(stats.favoriteShops.change)}
+              </p>
             </CardContent>
           </Card>
 
@@ -64,8 +106,10 @@ export default function DashboardPage() {
               <Star className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">24</div>
-              <p className="text-xs text-muted-foreground">+4 from last month</p>
+              <div className="text-2xl font-bold">{stats.reviews.count}</div>
+              <p className="text-xs text-muted-foreground">
+                {formatChangeText(stats.reviews.change)}
+              </p>
             </CardContent>
           </Card>
         </div>
@@ -146,36 +190,34 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Watch className="h-4 w-4 text-blue-600" />
+                {recentActivity.favoriteBrands.length > 0 ? (
+                  recentActivity.favoriteBrands.map((brand, index) => (
+                    <div key={brand.id}>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                          <Watch className="h-4 w-4 text-blue-600" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-medium">{brand.name}</div>
+                          <div className="text-sm text-muted-foreground">
+                            Added {formatDate(brand.addedAt)}
+                          </div>
+                        </div>
+                        <Badge variant="secondary">{brand.type}</Badge>
+                      </div>
+                      {index < recentActivity.favoriteBrands.length - 1 && (
+                        <Separator className="mt-4" />
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <div className="text-center py-4">
+                    <p className="text-sm text-muted-foreground">{t("noFavoriteBrands")}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {t("startExploringBrands")}
+                    </p>
                   </div>
-                  <div className="flex-1">
-                    <div className="font-medium">Rolex</div>
-                    <div className="text-sm text-muted-foreground">Added 2 days ago</div>
-                  </div>
-                  <Badge variant="secondary">Luxury</Badge>
-                </div>
-
-                <Separator />
-
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <Watch className="h-4 w-4 text-green-600" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium">Omega</div>
-                    <div className="text-sm text-muted-foreground">Added 1 week ago</div>
-                  </div>
-                  <Badge variant="secondary">Sport</Badge>
-                </div>
-
-                <Separator />
-
-                <div className="text-center py-4">
-                  <p className="text-sm text-muted-foreground">{t("noFavoriteBrands")}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{t("startExploringBrands")}</p>
-                </div>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -187,42 +229,33 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                    <Wrench className="h-4 w-4 text-orange-600" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium">Watch Repair Pro</div>
-                    <div className="flex items-center space-x-1">
-                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm">4.5</span>
+                {recentActivity.reviews.length > 0 ? (
+                  recentActivity.reviews.map((review, index) => (
+                    <div key={review.id}>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                          <Wrench className="h-4 w-4 text-orange-600" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-medium">{review.shopName}</div>
+                          <div className="flex items-center space-x-1">
+                            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                            <span className="text-sm">{review.rating}</span>
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            Reviewed {formatDate(review.reviewedAt)}
+                          </div>
+                        </div>
+                      </div>
+                      {index < recentActivity.reviews.length - 1 && <Separator className="mt-4" />}
                     </div>
-                    <div className="text-sm text-muted-foreground">Reviewed 3 days ago</div>
+                  ))
+                ) : (
+                  <div className="text-center py-4">
+                    <p className="text-sm text-muted-foreground">{t("noReviews")}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{t("visitShopsAndReview")}</p>
                   </div>
-                </div>
-
-                <Separator />
-
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Watch className="h-4 w-4 text-purple-600" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium">Luxury Timepieces</div>
-                    <div className="flex items-center space-x-1">
-                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm">5.0</span>
-                    </div>
-                    <div className="text-sm text-muted-foreground">Reviewed 1 week ago</div>
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="text-center py-4">
-                  <p className="text-sm text-muted-foreground">{t("noReviews")}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{t("visitShopsAndReview")}</p>
-                </div>
+                )}
               </div>
             </CardContent>
           </Card>

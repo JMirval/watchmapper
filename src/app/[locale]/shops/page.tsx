@@ -1,7 +1,7 @@
 "use client"
 import { useQuery } from "@blitzjs/rpc"
 import { useState, useEffect } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams, useParams } from "next/navigation"
 import getShops from "./queries/getShops"
 import getBrands from "../brands/queries/getBrands"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -18,11 +18,12 @@ import {
 } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Search, MapPin, Star, Heart, Filter, X, Navigation } from "lucide-react"
-import { toast } from "sonner"
 
 export default function ShopsPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const params = useParams()
+  const locale = params.locale as string
 
   // State for filters
   const [search, setSearch] = useState(searchParams.get("search") || "")
@@ -66,8 +67,8 @@ export default function ShopsPage() {
     if (page > 1) params.set("page", page.toString())
 
     const newUrl = params.toString() ? `?${params.toString()}` : ""
-    router.replace(`/shops${newUrl}`, { scroll: false })
-  }, [search, type, brandId, minRating, maxDistance, sortBy, sortOrder, page, router])
+    router.replace(`/${locale}/shops${newUrl}`, { scroll: false })
+  }, [search, type, brandId, minRating, maxDistance, sortBy, sortOrder, page, router, locale])
 
   // Queries
   const [shopsData] = useQuery(getShops, {

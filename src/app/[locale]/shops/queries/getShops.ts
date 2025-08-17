@@ -35,7 +35,7 @@ export default resolver.pipe(
 
     const skip = (page - 1) * limit
 
-    // Build where clause
+    // Build where clause for Prisma query
     const where: any = {}
 
     if (search) {
@@ -57,99 +57,88 @@ export default resolver.pipe(
     }
 
     if (brandId) {
-      where.brands =  {
+      where.brands = {
         some: {
           id: brandId,
         },
       }
     }
 
-    // Calculate distance if coordinates provided
-    let distanceSelect = ""
-    if (userLat && userLng) {
-      distanceSelect = `
-        , (
-          6371 * acos(
-            cos(radians(${userLat})) * cos(radians(latitude)) * 
-            cos(radians(longitude) - radians(${userLng})) + 
-            sin(radians(${userLat})) * sin(radians(latitude))
-          )
-        ) as distance
-      `
-    }
-
-    // Build order by clause
-    let orderBy: any = {}
-    if (sortBy === "distance" && userLat && userLng) {
-      orderBy.distance = sortOrder
-    } else {
-      orderBy[sortBy] = sortOrder
-    }
-
-    // Get shops with reviews and brands
-    const shops = await db.$queryRaw`
-      SELECT 
-        s.id,
-        s.name,
-        s.type,
-        s.latitude,
-        s.longitude,
-        s.createdAt,
-        s.updatedAt,
-        COUNT(DISTINCT r.id) as reviewCount,
-        AVG(r.rating) as averageRating
-        ${distanceSelect}
-      FROM Shop s
-      LEFT JOIN Review r ON s.id = r.shopId
-      WHERE 1=1
-        ${search ? `AND (s.name LIKE '%${search}%' OR s.type LIKE '%${search}%')` : ""}
-        ${type ? `AND s.type = '${type}'` : ""}
-        ${brandId ? `AND EXISTS (SELECT 1 FROM _BrandToShop WHERE B = s.id AND A = ${brandId})` : ""}
-        ${minRating ? `AND (SELECT AVG(rating) FROM Review WHERE shopId = s.id) >= ${minRating}` : ""}
-        ${maxDistance && userLat && userLng ? `AND (
-          6371 * acos(
-            cos(radians(${userLat})) * cos(radians(latitude)) * 
-            cos(radians(longitude) - radians(${userLng})) + 
-            sin(radians(${userLat})) * sin(radians(latitude))
-          )
-        ) <= ${maxDistance}` : ""}
-      GROUP BY s.id
-      ORDER BY ${sortBy === "distance" && userLat && userLng ? "distance" : `s.${sortBy}`} ${sortOrder.toUpperCase()}
-      LIMIT ${limit} OFFSET ${skip}
-    `
-
-    // Get total count for pagination
-    const totalCount = await db.shop.count({ where })
-
-    // Get brands for each shop
-    const shopsWithBrands = await Promise.all(
-      (shops as any[]).map(async (shop) => {
-        const brands = await db.brand.findMany({
-          where: {
-            shops: {
-              some: {
-                id: shop.id,
-              },
-            },
-          },
+    // Use Prisma's built-in query instead of raw SQL for better safety and maintainability
+    const shops = await db.shop.findMany({
+      where,
+      include: {
+        reviews: true,
+        brands: {
           select: {
             id: true,
             name: true,
             type: true,
           },
-        })
+        },
+      },
+      orderBy: {
+        [sortBy]: sortOrder,
+      },
+      skip,
+      take: limit,
+    })
 
-        return {
-          ...shop,
-          brands,
-          averageRating: shop.averageRating ? parseFloat(shop.averageRating) : 0,
-          reviewCount: parseInt(shop.reviewCount),
-        }
+    // Process shops to add computed fields
+    const processedShops = shops.map((shop) => {
+      const reviewCount = shop.reviews.length
+      const averageRating = reviewCount > 0 
+        ? shop.reviews.reduce((sum, review) => sum + review.rating, 0) / reviewCount 
+        : 0
+
+      let distance = null
+      if (userLat && userLng) {
+        // Calculate distance using Haversine formula
+        const R = 6371 // Earth's radius in kilometers
+        const dLat = (shop.latitude - userLat) * Math.PI / 180
+        const dLng = (shop.longitude - userLng) * Math.PI / 180
+        const a = 
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(userLat * Math.PI / 180) * Math.cos(shop.latitude * Math.PI / 180) *
+          Math.sin(dLng / 2) * Math.sin(dLng / 2)
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+        distance = R * c
+      }
+
+      return {
+        ...shop,
+        reviewCount,
+        averageRating,
+        distance,
+      }
+    })
+
+    // Filter by distance if specified
+    let filteredShops = processedShops
+    if (maxDistance && userLat && userLng) {
+      filteredShops = processedShops.filter(shop => shop.distance && shop.distance <= maxDistance)
+    }
+
+    // Filter by minimum rating if specified
+    if (minRating) {
+      filteredShops = filteredShops.filter(shop => shop.averageRating >= minRating)
+    }
+
+    // Sort by distance if requested and we have user location
+    if (sortBy === "distance" && userLat && userLng) {
+      filteredShops.sort((a, b) => {
+        if (!a.distance && !b.distance) return 0
+        if (!a.distance) return 1
+        if (!b.distance) return -1
+        return sortOrder === "asc" ? a.distance - b.distance : b.distance - a.distance
       })
-    )
+    }
+
+    // Get total count for pagination
+    const totalCount = await db.shop.count({ where })
 
     return {
-      shops: shopsWithBrands,
+      shops: filteredShops,
       pagination: {
         page,
         limit,

@@ -197,6 +197,51 @@ async function seed() {
 
   console.log(`✅ Found/created ${reviews.length} reviews`)
 
+  // Create user favorite brands
+  const favoriteBrands = []
+  const favoriteBrandData = [
+    { brandId: brands[0].id }, // Rolex
+    { brandId: brands[1].id }, // Omega
+    { brandId: brands[2].id }, // Patek Philippe
+  ]
+
+  for (const favoriteInfo of favoriteBrandData) {
+    const favorite = await db.userBrand.upsert({
+      where: { userId_brandId: { userId: user.id, brandId: favoriteInfo.brandId } },
+      update: {},
+      create: {
+        userId: user.id,
+        brandId: favoriteInfo.brandId,
+      },
+    })
+    favoriteBrands.push(favorite)
+  }
+
+  console.log(`✅ Found/created ${favoriteBrands.length} favorite brands`)
+
+  // Create user favorite shops
+  const favoriteShops = []
+  const favoriteShopData = [
+    { shopId: shops[0].id }, // Timepiece Boutique
+    { shopId: shops[1].id }, // Luxury Watch Co.
+    { shopId: shops[2].id }, // Precision Timepieces
+    { shopId: shops[3].id }, // Elite Watches
+  ]
+
+  for (const favoriteInfo of favoriteShopData) {
+    const favorite = await db.userShop.upsert({
+      where: { userId_shopId: { userId: user.id, shopId: favoriteInfo.shopId } },
+      update: {},
+      create: {
+        userId: user.id,
+        shopId: favoriteInfo.shopId,
+      },
+    })
+    favoriteShops.push(favorite)
+  }
+
+  console.log(`✅ Found/created ${favoriteShops.length} favorite shops`)
+
   console.log("🎉 Database seeded successfully!")
 }
 
