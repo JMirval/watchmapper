@@ -1,14 +1,15 @@
 import { forwardRef, PropsWithoutRef } from "react"
 import { useField, useFormikContext, ErrorMessage } from "formik"
 
-export interface LabeledTextFieldProps extends PropsWithoutRef<React.JSX.IntrinsicElements["input"]> {
+export interface LabeledTextFieldProps
+  extends PropsWithoutRef<React.InputHTMLAttributes<HTMLInputElement>> {
   /** Field name. */
   name: string
   /** Field label. */
   label: string
   /** Field type. Doesn't include radio buttons and checkboxes */
   type?: "text" | "password" | "email" | "number"
-  outerProps?: PropsWithoutRef<React.JSX.IntrinsicElements["div"]>
+  outerProps?: PropsWithoutRef<React.HTMLAttributes<HTMLDivElement>>
 }
 
 export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldProps>(

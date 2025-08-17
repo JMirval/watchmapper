@@ -24,7 +24,9 @@
       "@/*": ["./*"],
       "@/public/*": ["../../public/*"],
       "@/db": ["../../db/index.ts"],
-      "@/mailers/*": ["../../mailers/*"]
+      "@/mailers/*": ["../../mailers/*"],
+      "@/types": ["../types/index.ts"],
+      "@/types/*": ["../types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

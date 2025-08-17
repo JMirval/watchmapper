@@ -1,4 +1,4 @@
-import { BrandName, Reseller, ShopType } from "./types"
+import { BrandName, Reseller, ShopType } from "@/types"
 
 // Sample data for resellers/repair shops
 export const RESELLERS: Reseller[] = [

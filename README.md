@@ -18,9 +18,19 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Ensure the `.env.local` file has required environment variables:
 
+### For Development (SQLite)
 ```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/watchmapper
+DATABASE_URL="file:./dev.db"
+SESSION_SECRET_KEY="your-session-secret-key-here"
 ```
+
+### For Production (PostgreSQL)
+```
+DATABASE_URL="postgresql://username:password@host:port/database"
+SESSION_SECRET_KEY="your-session-secret-key-here"
+```
+
+For detailed deployment instructions with PostgreSQL on Vercel, see [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 Ensure the `.env.test.local` file has required environment variables:
 
