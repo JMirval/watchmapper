@@ -135,6 +135,14 @@
     "shopsFound": "{count} shops found",
     "usingYourLocation": "Using your location",
     "viewDetails": "View Details",
+    "clearFilters": "Clear",
+    "filters": "Filters",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {current} of {total}",
+    "reviews": "reviews",
+    "availableBrands": "Brands",
+    "more": "more",
     "shopTypes": {
       "jewelryStore": "Jewelry Store",
       "watchBoutique": "Watch Boutique",
@@ -142,6 +150,24 @@
       "onlineRetailer": "Online Retailer",
       "authorizedDealer": "Authorized Dealer"
     }
+  },
+  "shopDetails": {
+    "back": "Back",
+    "overview": "Overview",
+    "reviews": "Reviews",
+    "availableBrands": "Available Brands",
+    "contactInfo": "Contact Information",
+    "quickActions": "Quick Actions",
+    "similarShops": "Similar Shops",
+    "writeReview": "Write Review",
+    "noReviews": "No reviews yet",
+    "beFirstToReview": "Be the first to review this shop!",
+    "getDirections": "Get Directions",
+    "callShop": "Call Shop",
+    "visitWebsite": "Visit Website",
+    "sendMessage": "Send Message",
+    "similarShopsComingSoon": "Similar shops coming soon",
+    "memberSince": "Member since"
   },
   "profile": {
     "title": "User Profile",

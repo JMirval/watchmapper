@@ -18,12 +18,14 @@ import {
 } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Search, MapPin, Star, Heart, Filter, X, Navigation } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export default function ShopsPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const params = useParams()
   const locale = params.locale as string
+  const t = useTranslations("shops")
 
   // State for filters
   const [search, setSearch] = useState(searchParams.get("search") || "")
@@ -89,11 +91,11 @@ export default function ShopsPage() {
   const { shops, pagination } = shopsData || { shops: [], pagination: { page: 1, totalPages: 1 } }
 
   const shopTypes = [
-    "Jewelry Store",
-    "Watch Boutique",
-    "Department Store",
-    "Online Retailer",
-    "Authorized Dealer",
+    { value: "Jewelry Store", label: t("shopTypes.jewelryStore") },
+    { value: "Watch Boutique", label: t("shopTypes.watchBoutique") },
+    { value: "Department Store", label: t("shopTypes.departmentStore") },
+    { value: "Online Retailer", label: t("shopTypes.onlineRetailer") },
+    { value: "Authorized Dealer", label: t("shopTypes.authorizedDealer") },
   ]
 
   const clearFilters = () => {
@@ -119,8 +121,8 @@ export default function ShopsPage() {
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-2">Discover Watch Shops</h1>
-          <p className="text-muted-foreground">Find the perfect place to buy your next timepiece</p>
+          <h1 className="text-4xl font-bold mb-2">{t("title")}</h1>
+          <p className="text-muted-foreground">{t("subtitle")}</p>
         </div>
 
         {/* Search and Filters */}
@@ -129,16 +131,16 @@ export default function ShopsPage() {
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
                 <Search className="h-5 w-5" />
-                Search & Filters
+                {t("searchAndFilters")}
               </CardTitle>
               <div className="flex items-center gap-2">
                 <Button variant="outline" size="sm" onClick={() => setShowFilters(!showFilters)}>
                   <Filter className="h-4 w-4 mr-2" />
-                  Filters
+                  {t("filters")}
                 </Button>
                 <Button variant="outline" size="sm" onClick={clearFilters}>
                   <X className="h-4 w-4 mr-2" />
-                  Clear
+                  {t("clearFilters")}
                 </Button>
               </div>
             </div>
@@ -148,7 +150,7 @@ export default function ShopsPage() {
             <div className="relative">
               <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Search shops, brands, or types..."
+                placeholder={t("searchPlaceholder")}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="pl-10"
@@ -160,16 +162,16 @@ export default function ShopsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-4 border-t">
                 {/* Shop Type */}
                 <div className="space-y-2">
-                  <Label>Shop Type</Label>
+                  <Label>{t("shopTypes.jewelryStore")}</Label>
                   <Select value={type} onValueChange={setType}>
                     <SelectTrigger>
-                      <SelectValue placeholder="All types" />
+                      <SelectValue placeholder={t("allTypes")} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All types</SelectItem>
+                      <SelectItem value="">{t("allTypes")}</SelectItem>
                       {shopTypes.map((shopType) => (
-                        <SelectItem key={shopType} value={shopType}>
-                          {shopType}
+                        <SelectItem key={shopType.value} value={shopType.value}>
+                          {shopType.label}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -178,13 +180,13 @@ export default function ShopsPage() {
 
                 {/* Brand */}
                 <div className="space-y-2">
-                  <Label>Brand</Label>
+                  <Label>{t("allBrands")}</Label>
                   <Select value={brandId} onValueChange={setBrandId}>
                     <SelectTrigger>
-                      <SelectValue placeholder="All brands" />
+                      <SelectValue placeholder={t("allBrands")} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All brands</SelectItem>
+                      <SelectItem value="">{t("allBrands")}</SelectItem>
                       {brands.map((brand) => (
                         <SelectItem key={brand.id} value={brand.id.toString()}>
                           {brand.name}
@@ -196,7 +198,9 @@ export default function ShopsPage() {
 
                 {/* Rating */}
                 <div className="space-y-2">
-                  <Label>Minimum Rating: {minRating > 0 ? `${minRating}+ stars` : "Any"}</Label>
+                  <Label>
+                    {t("minimumRating", { rating: minRating > 0 ? minRating : t("anyRating") })}
+                  </Label>
                   <Slider
                     value={[minRating]}
                     onValueChange={([value]) => setMinRating(value)}
@@ -209,7 +213,7 @@ export default function ShopsPage() {
 
                 {/* Distance */}
                 <div className="space-y-2">
-                  <Label>Max Distance: {maxDistance}km</Label>
+                  <Label>{t("maxDistance", { distance: maxDistance })}</Label>
                   <Slider
                     value={[maxDistance]}
                     onValueChange={([value]) => setMaxDistance(value)}
@@ -224,16 +228,16 @@ export default function ShopsPage() {
 
             {/* Sort Options */}
             <div className="flex items-center gap-4 pt-4 border-t">
-              <Label>Sort by:</Label>
+              <Label>{t("sortBy")}</Label>
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-40">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="name">Name</SelectItem>
-                  <SelectItem value="rating">Rating</SelectItem>
-                  <SelectItem value="distance">Distance</SelectItem>
-                  <SelectItem value="createdAt">Newest</SelectItem>
+                  <SelectItem value="name">{t("name")}</SelectItem>
+                  <SelectItem value="rating">{t("rating")}</SelectItem>
+                  <SelectItem value="distance">{t("distance")}</SelectItem>
+                  <SelectItem value="createdAt">{t("newest")}</SelectItem>
                 </SelectContent>
               </Select>
               <Button
@@ -250,11 +254,11 @@ export default function ShopsPage() {
         {/* Results */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-muted-foreground">{pagination.total} shops found</p>
+            <p className="text-muted-foreground">{t("shopsFound", { count: pagination.total })}</p>
             {userLocation && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Navigation className="h-4 w-4" />
-                Using your location
+                {t("usingYourLocation")}
               </div>
             )}
           </div>
@@ -297,14 +301,14 @@ export default function ShopsPage() {
                       ))}
                     </div>
                     <span className="text-sm text-muted-foreground">
-                      {shop.averageRating.toFixed(1)} ({shop.reviewCount} reviews)
+                      {shop.averageRating.toFixed(1)} ({shop.reviewCount} {t("reviews")})
                     </span>
                   </div>
 
                   {/* Brands */}
                   {shop.brands.length > 0 && (
                     <div>
-                      <Label className="text-sm font-medium">Brands:</Label>
+                      <Label className="text-sm font-medium">{t("availableBrands")}:</Label>
                       <div className="flex flex-wrap gap-1 mt-1">
                         {shop.brands.slice(0, 3).map((brand: any) => (
                           <Badge key={brand.id} variant="outline" className="text-xs">
@@ -313,7 +317,7 @@ export default function ShopsPage() {
                         ))}
                         {shop.brands.length > 3 && (
                           <Badge variant="outline" className="text-xs">
-                            +{shop.brands.length - 3} more
+                            +{shop.brands.length - 3} {t("more")}
                           </Badge>
                         )}
                       </div>
@@ -330,8 +334,12 @@ export default function ShopsPage() {
 
                   {/* Actions */}
                   <div className="flex items-center gap-2 pt-2">
-                    <Button size="sm" className="flex-1">
-                      View Details
+                    <Button
+                      size="sm"
+                      className="flex-1"
+                      onClick={() => router.push(`/${locale}/shops/${shop.id}`)}
+                    >
+                      {t("viewDetails")}
                     </Button>
                     <Button variant="outline" size="sm">
                       <MapPin className="h-4 w-4" />
@@ -350,17 +358,17 @@ export default function ShopsPage() {
                 onClick={() => setPage(page - 1)}
                 disabled={!pagination.hasPrev}
               >
-                Previous
+                {t("previous")}
               </Button>
               <span className="text-sm text-muted-foreground">
-                Page {page} of {pagination.totalPages}
+                {t("page", { current: page, total: pagination.totalPages })}
               </span>
               <Button
                 variant="outline"
                 onClick={() => setPage(page + 1)}
                 disabled={!pagination.hasNext}
               >
-                Next
+                {t("next")}
               </Button>
             </div>
           )}

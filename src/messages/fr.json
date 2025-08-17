@@ -135,6 +135,14 @@
     "shopsFound": "{count} boutiques trouvées",
     "usingYourLocation": "Utilise votre localisation",
     "viewDetails": "Voir les détails",
+    "clearFilters": "Effacer",
+    "filters": "Filtres",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "page": "Page {current} sur {total}",
+    "reviews": "avis",
+    "availableBrands": "Marques",
+    "more": "plus",
     "shopTypes": {
       "jewelryStore": "Bijouterie",
       "watchBoutique": "Boutique de montres",
@@ -142,6 +150,24 @@
       "onlineRetailer": "Vendeur en ligne",
       "authorizedDealer": "Revendeur agréé"
     }
+  },
+  "shopDetails": {
+    "back": "Retour",
+    "overview": "Aperçu",
+    "reviews": "Avis",
+    "availableBrands": "Marques disponibles",
+    "contactInfo": "Informations de contact",
+    "quickActions": "Actions rapides",
+    "similarShops": "Boutiques similaires",
+    "writeReview": "Écrire un avis",
+    "noReviews": "Aucun avis pour le moment",
+    "beFirstToReview": "Soyez le premier à évaluer cette boutique !",
+    "getDirections": "Obtenir l'itinéraire",
+    "callShop": "Appeler la boutique",
+    "visitWebsite": "Visiter le site web",
+    "sendMessage": "Envoyer un message",
+    "similarShopsComingSoon": "Boutiques similaires bientôt disponibles",
+    "memberSince": "Membre depuis"
   },
   "profile": {
     "title": "Profil utilisateur",
