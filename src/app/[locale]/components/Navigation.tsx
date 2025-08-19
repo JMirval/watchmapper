@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useParams } from "next/navigation"
 import { useState } from "react"
+import Image from "next/image"
 import { UserMenu } from "@/components/UserMenu"
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 import { ClientOnly } from "@/components/ClientOnly"
@@ -35,7 +36,16 @@ export function Navigation() {
             {/* Header */}
             <div className="flex items-center justify-between mb-8 p-4">
               <Link href={`/${locale}`} onClick={() => setIsMobileMenuOpen(false)}>
-                <h1 className="text-xl font-bold text-gray-900">{t("appName")}</h1>
+                <div className="flex items-center">
+                  <Image
+                    src="/watchmapper.png"
+                    alt="WatchMapper"
+                    width={32}
+                    height={32}
+                    className="mr-2"
+                  />
+                  <h1 className="text-xl font-bold text-gray-900">{t("appName")}</h1>
+                </div>
               </Link>
             </div>
 
@@ -82,7 +92,16 @@ export function Navigation() {
           {/* Logo and Desktop Navigation */}
           <div className="flex items-center space-x-6">
             <Link href={`/${locale}`}>
-              <h1 className="text-xl font-bold text-gray-900">{t("appName")}</h1>
+              <div className="flex items-center">
+                <Image
+                  src="/watchmapper.png"
+                  alt="WatchMapper"
+                  width={32}
+                  height={32}
+                  className="mr-2"
+                />
+                <h1 className="text-xl font-bold text-gray-900">{t("appName")}</h1>
+              </div>
             </Link>
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-4">

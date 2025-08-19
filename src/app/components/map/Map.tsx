@@ -65,7 +65,7 @@ export default function MapComponent({ shops }: MapProps) {
           width: "100%",
           height: "100%",
         }}
-        mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
+        mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
         initialViewState={{
           longitude: memoizedCenter[0],
           latitude: memoizedCenter[1],

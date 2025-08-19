@@ -12,6 +12,8 @@ export default function MapContent({ visibleShops, handleMarkerClick }: MapConte
   return (
     <>
       {visibleShops.map((shop, index) => {
+        const isRepair = shop.type === "repair"
+
         return (
           <Marker
             key={shop.id}
@@ -22,32 +24,53 @@ export default function MapContent({ visibleShops, handleMarkerClick }: MapConte
             }}
           >
             <div
+              className={`transition-all duration-300 hover:scale-110 cursor-pointer ${
+                isRepair ? "map-marker-repair" : "map-marker-reseller"
+              }`}
               style={{
-                background:
-                  shop.type === "repair"
-                    ? "linear-gradient(135deg, #3b82f6, #1d4ed8)"
-                    : "linear-gradient(135deg, #10b981, #059669)",
+                background: isRepair
+                  ? "linear-gradient(135deg, #ff6b6b, #ee5a24, #ff4757)"
+                  : "linear-gradient(135deg, #4834d4, #686de0, #30336b)",
                 borderRadius: "50%",
-                width: "48px",
-                height: "48px",
+                width: "56px",
+                height: "56px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                boxShadow:
-                  shop.type === "repair"
-                    ? "0 4px 12px rgba(59,130,246,0.3)"
-                    : "0 4px 12px rgba(16,185,129,0.3)",
                 border: "3px solid #fff",
-                fontSize: "24px",
+                fontSize: "28px",
                 color: "#fff",
                 cursor: "pointer",
+                position: "relative",
+                overflow: "hidden",
               }}
               onClick={(e) => {
                 e.stopPropagation()
                 handleMarkerClick(index)
               }}
             >
-              {shop.type === "repair" ? "🔧" : "⌚️"}
+              {/* Animated background pattern */}
+              <div
+                className="absolute inset-0 opacity-20"
+                style={{
+                  background: isRepair
+                    ? "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%)"
+                    : "radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.3) 0%, transparent 50%)",
+                }}
+              />
+
+              {/* Main icon */}
+              <div className="relative z-10 drop-shadow-lg">{isRepair ? "🔧" : "⌚️"}</div>
+
+              {/* Glowing effect */}
+              <div
+                className="absolute inset-0 rounded-full animate-ping opacity-30"
+                style={{
+                  background: isRepair
+                    ? "radial-gradient(circle, rgba(255, 107, 107, 0.6) 0%, transparent 70%)"
+                    : "radial-gradient(circle, rgba(72, 52, 212, 0.6) 0%, transparent 70%)",
+                }}
+              />
             </div>
           </Marker>
         )
